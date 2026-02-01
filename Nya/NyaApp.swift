@@ -9,9 +9,29 @@ import SwiftUI
 
 @main
 struct NyaApp: App {
+    @StateObject private var monitor = ActiveAppMonitor()
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        MenuBarExtra("Nya", systemImage: "cat.fill") {
+            Text("🐱 Nya is watching...")
+                .padding(.vertical, 4)
+
+            Divider()
+
+            if let currentApp = monitor.currentAppName {
+                Text("Current: \(currentApp)")
+                    .foregroundColor(.secondary)
+            }
+
+            Text("Today: \(monitor.distractionCount) distractions")
+                .foregroundColor(monitor.isCurrentlyDistracted ? .red : .secondary)
+
+            Divider()
+
+            Button("Quit") {
+                NSApplication.shared.terminate(nil)
+            }
+            .keyboardShortcut("q")
         }
     }
 }
