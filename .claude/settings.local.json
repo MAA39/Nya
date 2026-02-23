@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm update:*)"
+      "Bash(npm update:*)",
+      "Bash(open:*)",
+      "Bash(log show:*)",
+      "Bash(xcodebuild:*)",
+      "Bash(pkill:*)",
+      "Bash(osascript:*)",
+      "Bash(# 現在起動中のアプリ一覧を確認 osascript -e ''tell application \"\"System Events\"\" to get name of every process whose background only is false'')",
+      "Bash(# Nyaアプリの最近のログを確認 log show --predicate ''process == \"\"Nya\"\"'' --last 2m)"
     ]
   }
 }

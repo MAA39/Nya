@@ -1,98 +1,91 @@
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+# CLAUDE.md - NyaSquat
 
 ## Project Overview
 
-Nya（"Nab Your Attention"）は「猫が監視している」集中支援macOSメニューバーアプリ。スクリーンタイムが増えたりSNS（Twitter, Instagram等）を見ると猫が鳴いて注意する。
+NyaSquat = SNS使いすぎ検知 → スクワット強制のmacOSメニューバーアプリ。
+Twitter/YouTube等を15分使うとスクワットウィンドウが自動起動、10回やらないと閉じれない。
 
-- **ターゲット**: macOS 13.0+ (Ventura)
-- **フレームワーク**: SwiftUI + MenuBarExtra
-- **コンセプト**: KIKIのような「怖かわ」accountability monster
+- **Target**: macOS 14.0+ (Sonoma)
+- **Framework**: SwiftUI + MenuBarExtra
+- **Detection**: Apple Vision (VNHumanBodyPoseObservation) + カメラ
+- **Concept**: 猫が見張ってる accountability app
 
 ## Build Commands
 
 ```bash
-# Build the project
-xcodebuild -scheme Nya -configuration Debug build
+# ビルド
+xcodebuild -scheme NyaSquat -configuration Debug build
 
-# Build for release
-xcodebuild -scheme Nya -configuration Release build
+# クリーンビルド
+xcodebuild -scheme NyaSquat clean && xcodebuild -scheme NyaSquat -configuration Debug build
 
-# Run unit tests
-xcodebuild -scheme Nya -configuration Debug test
-
-# Run a specific test
-xcodebuild -scheme Nya -configuration Debug -only-testing:NyaTests/NyaTests/testName test
-
-# Clean build
-xcodebuild -scheme Nya clean
-
-# Launch app (after build)
-open ~/Library/Developer/Xcode/DerivedData/Nya-*/Build/Products/Debug/Nya.app
+# アプリ起動
+open ~/Library/Developer/Xcode/DerivedData/NyaSquat-*/Build/Products/Debug/NyaSquat.app
 ```
 
 ## Architecture
 
-- **App Entry Point**: `Nya/NyaApp.swift` - MenuBarExtra Scene（メニューバー常駐）
-- **App Monitor**: `Nya/ActiveAppMonitor.swift` - NSWorkspace購読でアクティブアプリ監視
-- **Unit Tests**: `NyaTests/NyaTests.swift` - Swift Testing framework (`@Test`)
-- **UI Tests**: `NyaUITests/` - XCTest framework
+### ファイル構成
+```
+NyaSquat/
+├── NyaSquatApp.swift       # エントリ: MenuBarExtra + Window定義
+├── MenuView.swift          # メニューバーUI（SNS時間表示、設定）
+├── SquatView.swift         # メインUI: モード選択→カメラ/手動→完了
+├── SquatDetector.swift     # カメラ+Vision骨格検出+スクワット判定
+├── SquatCounter.swift      # カウンター（セッション/日次）
+├── SquatSettings.swift     # 設定（目標回数、トリガー時間等）
+├── SNSMonitor.swift        # NSWorkspace/AppleScriptでSNS使用時間計測
+├── CameraPreviewView.swift # NSViewRepresentable: カメラ映像プレビュー
+├── StickFigureView.swift   # 棒人間アニメーション表示
+├── AngleCalculator.swift   # 膝角度計算（Hip-Knee-Ankle 3点）
+├── SoundPlayer.swift       # 猫鳴き声再生
+└── NyaSquat.entitlements   # カメラ+AppleEvents+Sandbox
+```
+
+### フロー
+1. SNSMonitor: Twitter/YouTube検知 → 累積タイマー
+2. 15分到達 → SquatView自動起動（猫鳴き声）
+3. モード選択: カメラ or 手動
+4. カメラ: Vision骨格検出で自動カウント / 手動: スペースキー
+5. 10回完了 → 完了画面（猫鳴き声） → タイマーリセット
 
 ## Key Configuration
 
-- **Bundle ID**: `com.masakazu.Nya`
-- **LSUIElement**: `YES` (Dockに出ない、メニューバーのみ)
-- **Sandbox**: Enabled with hardened runtime
-- **Swift Concurrency**: Uses `@MainActor` as default actor isolation
+- **Bundle ID**: com.masakazu.NyaSquat
+- **LSUIElement**: YES (Dockに出ない)
+- **Sandbox**: Enabled
+- **Entitlements**: camera, apple-events
+- **SWIFT_DEFAULT_ACTOR_ISOLATION**: MainActor
+- **Xcode project**: objectVersion 77 (PBXFileSystemSynchronizedRootGroup)
+  → NyaSquat/フォルダ内のSwiftファイルは自動でビルド対象に含まれる
 
 ## 技術メモ
 
-### アクティブアプリ監視
-```swift
-// 重要: NotificationCenter.default ではなく NSWorkspace.shared.notificationCenter を使う
-NSWorkspace.shared.notificationCenter
-    .publisher(for: NSWorkspace.didActivateApplicationNotification)
-```
+### Actor Isolation (重要)
+- `SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor` が有効
+- SquatDetectorの`captureOutput`は`nonisolated`（バックグラウンドキューから呼ばれる）
+- **poseRequestはcaptureOutput内でローカル生成**すること（MainActorプロパティにアクセス不可）
+- 状態更新は `Task { @MainActor in }` で明示的にメインに戻す
 
-### よくある罠
-1. NSWorkspace通知が届かない → `NSWorkspace.shared.notificationCenter` を使う
-2. Combine購読が即解放 → `@StateObject` か App のプロパティで保持
-3. 音ファイルがBundle入らない → Target Membership確認
+### スクワット検出パラメータ
+- Standing: >160°
+- Squatting: <100°
+- EMA smoothing: 0.3
+- Cooldown: 0.5秒
+- 3点: Hip-Knee-Ankle角度
 
-## 進捗報告ドキュメント
+### カメラプレビュー
+- CameraPreviewView = NSViewRepresentable + AVCaptureVideoPreviewLayer
+- 左右反転（鏡像モード）有効
+- SquatDetector.captureSessionを共有
 
-作業完了時は `docs/` ディレクトリに進捗報告を保存すること。
+### モード選択 & フォールバック
+- 起動時にカメラ/手動の選択UI表示
+- カメラモードで5秒以上人体未検出 → 手動切替ボタン表示
+- カメラモード中もスペースキーは常に有効（隠しボタン）
 
-### ファイル命名規則
-```
-docs/YYYYMMDDHHMMSS-XXXX.md
-```
-- `YYYYMMDDHHMMSS`: 作業完了時のタイムスタンプ
-- `XXXX`: 作業内容を表す短い識別子（例: `phase1-menubar-setup`, `fix-audio-playback`）
+## Linear管理
 
-### 記載内容
-1. **実行日時**
-2. **受けた指示**: 何を依頼されたか
-3. **実装内容**: 具体的に何をしたか（コード抜粋含む）
-4. **変更ファイル一覧**: ファイル名、変更種別、内容
-5. **ビルド結果**
-6. **完了状況**: チェックリスト形式
-7. **次のステップ**: 残タスク
-
-## 開発フェーズ
-
-### Phase 1: 最小構成 ✅
-- [x] MenuBarExtraが表示される
-- [x] Quitボタンで終了できる
-- [x] アクティブアプリ名をログ出力
-
-### Phase 2: 監視機能 ✅
-- [x] 禁止アプリ検知
-- [x] 検知したら猫が鳴く（音声再生）
-- [x] 検知回数カウント
-
-### Phase 3: UI強化
-- [ ] 猫のアイコン/アニメーション
-- [ ] 設定画面（禁止アプリ編集）
-- [ ] 統計表示
+プロジェクト: NyaSquat (100days100prd workspace)
+- 完了: 100-11, 100-18, 100-19, 100-20, 100-21, 100-22
+- 残: 100-12(コードレビュー), 100-13(カメラ検証), 100-14(手動検証), 100-15(SNS監視), 100-16(動画エクスポート), 100-17(このファイル)

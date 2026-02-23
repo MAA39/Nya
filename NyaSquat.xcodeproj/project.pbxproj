@@ -12,37 +12,37 @@
 			containerPortal = 0C0FFB702F2F849100C6B705 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0C0FFB772F2F849100C6B705;
-			remoteInfo = Nya;
+			remoteInfo = NyaSquat;
 		};
 		0C0FFB902F2F849300C6B705 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0C0FFB702F2F849100C6B705 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0C0FFB772F2F849100C6B705;
-			remoteInfo = Nya;
+			remoteInfo = NyaSquat;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0C0FFB782F2F849200C6B705 /* Nya.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nya.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C0FFB852F2F849300C6B705 /* NyaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NyaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C0FFB8F2F2F849300C6B705 /* NyaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NyaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C0FFB782F2F849200C6B705 /* NyaSquat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NyaSquat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C0FFB852F2F849300C6B705 /* NyaSquatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NyaSquatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C0FFB8F2F2F849300C6B705 /* NyaSquatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NyaSquatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		0C0FFB7A2F2F849200C6B705 /* Nya */ = {
+		0C0FFB7A2F2F849200C6B705 /* NyaSquat */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Nya;
+			path = NyaSquat;
 			sourceTree = "<group>";
 		};
-		0C0FFB882F2F849300C6B705 /* NyaTests */ = {
+		0C0FFB882F2F849300C6B705 /* NyaSquatTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NyaTests;
+			path = NyaSquatTests;
 			sourceTree = "<group>";
 		};
-		0C0FFB922F2F849300C6B705 /* NyaUITests */ = {
+		0C0FFB922F2F849300C6B705 /* NyaSquatUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NyaUITests;
+			path = NyaSquatUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +75,9 @@
 		0C0FFB6F2F2F849100C6B705 = {
 			isa = PBXGroup;
 			children = (
-				0C0FFB7A2F2F849200C6B705 /* Nya */,
-				0C0FFB882F2F849300C6B705 /* NyaTests */,
-				0C0FFB922F2F849300C6B705 /* NyaUITests */,
+				0C0FFB7A2F2F849200C6B705 /* NyaSquat */,
+				0C0FFB882F2F849300C6B705 /* NyaSquatTests */,
+				0C0FFB922F2F849300C6B705 /* NyaSquatUITests */,
 				0C0FFB792F2F849200C6B705 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 		0C0FFB792F2F849200C6B705 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0C0FFB782F2F849200C6B705 /* Nya.app */,
-				0C0FFB852F2F849300C6B705 /* NyaTests.xctest */,
-				0C0FFB8F2F2F849300C6B705 /* NyaUITests.xctest */,
+				0C0FFB782F2F849200C6B705 /* NyaSquat.app */,
+				0C0FFB852F2F849300C6B705 /* NyaSquatTests.xctest */,
+				0C0FFB8F2F2F849300C6B705 /* NyaSquatUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0C0FFB772F2F849100C6B705 /* Nya */ = {
+		0C0FFB772F2F849100C6B705 /* NyaSquat */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0C0FFB992F2F849300C6B705 /* Build configuration list for PBXNativeTarget "Nya" */;
+			buildConfigurationList = 0C0FFB992F2F849300C6B705 /* Build configuration list for PBXNativeTarget "NyaSquat" */;
 			buildPhases = (
 				0C0FFB742F2F849100C6B705 /* Sources */,
 				0C0FFB752F2F849100C6B705 /* Frameworks */,
@@ -108,18 +108,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				0C0FFB7A2F2F849200C6B705 /* Nya */,
+				0C0FFB7A2F2F849200C6B705 /* NyaSquat */,
 			);
-			name = Nya;
+			name = NyaSquat;
 			packageProductDependencies = (
 			);
-			productName = Nya;
-			productReference = 0C0FFB782F2F849200C6B705 /* Nya.app */;
+			productName = NyaSquat;
+			productReference = 0C0FFB782F2F849200C6B705 /* NyaSquat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0C0FFB842F2F849300C6B705 /* NyaTests */ = {
+		0C0FFB842F2F849300C6B705 /* NyaSquatTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0C0FFB9C2F2F849300C6B705 /* Build configuration list for PBXNativeTarget "NyaTests" */;
+			buildConfigurationList = 0C0FFB9C2F2F849300C6B705 /* Build configuration list for PBXNativeTarget "NyaSquatTests" */;
 			buildPhases = (
 				0C0FFB812F2F849300C6B705 /* Sources */,
 				0C0FFB822F2F849300C6B705 /* Frameworks */,
@@ -131,18 +131,18 @@
 				0C0FFB872F2F849300C6B705 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				0C0FFB882F2F849300C6B705 /* NyaTests */,
+				0C0FFB882F2F849300C6B705 /* NyaSquatTests */,
 			);
-			name = NyaTests;
+			name = NyaSquatTests;
 			packageProductDependencies = (
 			);
-			productName = NyaTests;
-			productReference = 0C0FFB852F2F849300C6B705 /* NyaTests.xctest */;
+			productName = NyaSquatTests;
+			productReference = 0C0FFB852F2F849300C6B705 /* NyaSquatTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0C0FFB8E2F2F849300C6B705 /* NyaUITests */ = {
+		0C0FFB8E2F2F849300C6B705 /* NyaSquatUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0C0FFB9F2F2F849300C6B705 /* Build configuration list for PBXNativeTarget "NyaUITests" */;
+			buildConfigurationList = 0C0FFB9F2F2F849300C6B705 /* Build configuration list for PBXNativeTarget "NyaSquatUITests" */;
 			buildPhases = (
 				0C0FFB8B2F2F849300C6B705 /* Sources */,
 				0C0FFB8C2F2F849300C6B705 /* Frameworks */,
@@ -154,13 +154,13 @@
 				0C0FFB912F2F849300C6B705 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				0C0FFB922F2F849300C6B705 /* NyaUITests */,
+				0C0FFB922F2F849300C6B705 /* NyaSquatUITests */,
 			);
-			name = NyaUITests;
+			name = NyaSquatUITests;
 			packageProductDependencies = (
 			);
-			productName = NyaUITests;
-			productReference = 0C0FFB8F2F2F849300C6B705 /* NyaUITests.xctest */;
+			productName = NyaSquatUITests;
+			productReference = 0C0FFB8F2F2F849300C6B705 /* NyaSquatUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0C0FFB732F2F849100C6B705 /* Build configuration list for PBXProject "Nya" */;
+			buildConfigurationList = 0C0FFB732F2F849100C6B705 /* Build configuration list for PBXProject "NyaSquat" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0C0FFB772F2F849100C6B705 /* Nya */,
-				0C0FFB842F2F849300C6B705 /* NyaTests */,
-				0C0FFB8E2F2F849300C6B705 /* NyaUITests */,
+				0C0FFB772F2F849100C6B705 /* NyaSquat */,
+				0C0FFB842F2F849300C6B705 /* NyaSquatTests */,
+				0C0FFB8E2F2F849300C6B705 /* NyaSquatUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		0C0FFB872F2F849300C6B705 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0C0FFB772F2F849100C6B705 /* Nya */;
+			target = 0C0FFB772F2F849100C6B705 /* NyaSquat */;
 			targetProxy = 0C0FFB862F2F849300C6B705 /* PBXContainerItemProxy */;
 		};
 		0C0FFB912F2F849300C6B705 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0C0FFB772F2F849100C6B705 /* Nya */;
+			target = 0C0FFB772F2F849100C6B705 /* NyaSquat */;
 			targetProxy = 0C0FFB902F2F849300C6B705 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -394,6 +394,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NyaSquat/NyaSquat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -404,6 +405,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "スクワットのフォーム検出にカメラを使用します";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -411,7 +413,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.Nya;
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.NyaSquat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -428,6 +430,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NyaSquat/NyaSquat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -438,6 +441,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "スクワットのフォーム検出にカメラを使用します";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -445,7 +449,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.Nya;
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.NyaSquat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -467,14 +471,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.NyaTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.NyaSquatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nya.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nya";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NyaSquat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NyaSquat";
 			};
 			name = Debug;
 		};
@@ -488,14 +492,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.NyaTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.NyaSquatTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nya.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nya";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NyaSquat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NyaSquat";
 			};
 			name = Release;
 		};
@@ -507,14 +511,14 @@
 				DEVELOPMENT_TEAM = 7VZ6A4CJTG;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.NyaUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.NyaSquatUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Nya;
+				TEST_TARGET_NAME = NyaSquat;
 			};
 			name = Debug;
 		};
@@ -526,21 +530,21 @@
 				DEVELOPMENT_TEAM = 7VZ6A4CJTG;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.NyaUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.masakazu.NyaSquatUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Nya;
+				TEST_TARGET_NAME = NyaSquat;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0C0FFB732F2F849100C6B705 /* Build configuration list for PBXProject "Nya" */ = {
+		0C0FFB732F2F849100C6B705 /* Build configuration list for PBXProject "NyaSquat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0C0FFB972F2F849300C6B705 /* Debug */,
@@ -549,7 +553,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0C0FFB992F2F849300C6B705 /* Build configuration list for PBXNativeTarget "Nya" */ = {
+		0C0FFB992F2F849300C6B705 /* Build configuration list for PBXNativeTarget "NyaSquat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0C0FFB9A2F2F849300C6B705 /* Debug */,
@@ -558,7 +562,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0C0FFB9C2F2F849300C6B705 /* Build configuration list for PBXNativeTarget "NyaTests" */ = {
+		0C0FFB9C2F2F849300C6B705 /* Build configuration list for PBXNativeTarget "NyaSquatTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0C0FFB9D2F2F849300C6B705 /* Debug */,
@@ -567,7 +571,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0C0FFB9F2F2F849300C6B705 /* Build configuration list for PBXNativeTarget "NyaUITests" */ = {
+		0C0FFB9F2F2F849300C6B705 /* Build configuration list for PBXNativeTarget "NyaSquatUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0C0FFBA02F2F849300C6B705 /* Debug */,
