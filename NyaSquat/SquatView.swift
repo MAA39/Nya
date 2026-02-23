@@ -7,9 +7,13 @@
 //  FIX 100-20: カメラYes/No選択
 //  FIX 100-21: カメラモード時フォールバックUI
 //  FIX 100-22: 起動時・完了時に猫鳴き声
+//  FIX 100-23: 最前面表示
+//  FIX 100-24: 深さ色フィードバック
+//  FIX 100-25: 完了後の状態リセット
 //
 
 import SwiftUI
+import AppKit
 
 struct SquatView: View {
     @ObservedObject var squatCounter: SquatCounter
@@ -26,6 +30,38 @@ struct SquatView: View {
 
     var onComplete: () -> Void
 
+    // 100-24: 深さに応じた背景色
+    private var depthColor: Color {
+        // マニュアルモード or モード選択中 or 完了画面 → 色変化なし
+        guard !isManualMode, !showModeSelection, !showComplete else {
+            return .clear
+        }
+        let angle = detector.kneeAngle
+        if angle > 160 {
+            return .clear // 立ってる → ニュートラル
+        } else if angle > 120 {
+            // 浅い → 赤 (opacity: 角度が下がるほど強く)
+            let t = (160 - angle) / 40.0 // 0〜1
+            return Color.red.opacity(0.15 + t * 0.15)
+        } else if angle > 100 {
+            // 中間 → 黄色
+            return Color.orange.opacity(0.2)
+        } else {
+            // 十分深い → 緑
+            return Color.green.opacity(0.25)
+        }
+    }
+
+    // 100-24: 深さステータステキスト
+    private var depthStatusText: String {
+        guard !isManualMode, !showModeSelection, !showComplete else { return "" }
+        let angle = detector.kneeAngle
+        if angle > 160 { return "" }
+        else if angle > 120 { return "🔴 もっと深く！" }
+        else if angle > 100 { return "🟡 もうちょい！" }
+        else { return "🟢 いいね！" }
+    }
+
     var body: some View {
         ZStack {
             // Background
@@ -35,6 +71,11 @@ struct SquatView: View {
                 startPoint: .top, endPoint: .bottom
             )
             .ignoresSafeArea()
+
+            // 100-24: 深さ色オーバーレイ
+            depthColor
+                .ignoresSafeArea()
+                .animation(.easeInOut(duration: 0.3), value: detector.kneeAngle)
 
             if showModeSelection {
                 modeSelectionView
@@ -46,6 +87,36 @@ struct SquatView: View {
         }
         .frame(minWidth: 420, minHeight: 560)
         .onDisappear { stopSession() }
+        // 100-25: ウィンドウ表示時に状態リセット
+        .onAppear {
+            resetViewState()
+            // 100-23: 最前面表示
+            makeWindowFloating()
+        }
+    }
+
+    // 100-25: 全状態リセット
+    private func resetViewState() {
+        showComplete = false
+        showModeSelection = true
+        elapsed = 0
+        manualDepth = 0
+        isManualMode = false
+        cameraFailSeconds = 0
+        squatCounter.reset()
+        detector.stopCamera()
+    }
+
+    // 100-23: ウィンドウを最前面に
+    private func makeWindowFloating() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            if let window = NSApp.windows.first(where: {
+                $0.identifier?.rawValue == "squat-window" || $0.title == "NyaSquat"
+            }) {
+                window.level = .floating
+                window.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
+            }
+        }
     }
 
     // MARK: - Mode Selection (100-20)
@@ -150,6 +221,15 @@ struct SquatView: View {
                 .foregroundColor(.secondary)
                 .padding(.horizontal, 10).padding(.vertical, 3)
                 .background(.black.opacity(0.3)).cornerRadius(6)
+
+            // 100-24: 深さステータス（大きく表示）
+            if !depthStatusText.isEmpty {
+                Text(depthStatusText)
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(.white)
+                    .shadow(color: .black.opacity(0.5), radius: 4)
+                    .animation(.easeInOut(duration: 0.2), value: depthStatusText)
+            }
 
             // Counter ring
             counterRing
